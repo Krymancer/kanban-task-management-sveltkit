@@ -5,27 +5,19 @@
 
   let primary = !secondary && !destructive;
 
-  const primaryBaseClass = 'bg-purple rounded-3xl p-4 text-white font-bold hover:bg-purple-hover transition-all flex items-center justify-center';
-  const secondaryBaseClass = 'bg-purple/10 rounded-3xl p-4 text-purple font-bold hover:bg-purple/30 transition-all flex items-center justify-center';
-  const destructiveBaseClass = 'bg-red rounded-3xl p-4 text-white font-bold hover:bg-red-hover transition-all flex items-center justify-center';
+  const baseClass = 'rounded-3xl p-4 font-bold flex items-center justify-center transition-all';
+
+  const primaryClass = 'bg-purple text-white hover:bg-purple-hover';
+  const secondaryClass = 'bg-purple/10 text-purple hover:bg-purple/30 dark:bg-white dark:text-purple dark:hover:bg-white';
+  const destructiveClass = 'bg-red text-white hover:bg-red-hover';
+
+  const size = large ? 'h-12 text-heading-m' : 'h-10 text-heading-s';
+
+  const style = `${baseClass} ${primary ? primaryClass : ''} ${secondary ? secondaryClass : ''} ${destructive ? destructiveClass : ''} ${size}`;
 
   export let label: string = "Button";
 </script>
 
-{#if primary}
-<button class={`${primaryBaseClass} ${large ? 'h-12' : 'h-10'}`} >
-  <span class={large ? 'text-heading-m' : 'text-heading-s'}>{label}</span>
+<button class={style} >
+  {label}
 </button>
-{/if}
-
-{#if secondary}
-<button class={`${secondaryBaseClass} ${large ? 'h-12' : 'h-10'}`} >
-  <span class={large ? 'text-heading-m' : 'text-heading-s'}>{label}</span>
-</button>
-{/if}
-
-{#if destructive}
-<button class={`${destructiveBaseClass} ${large ? 'h-12' : 'h-10'}`}>
-  <span class={large ? 'text-heading-m' : 'text-heading-s'}>{label}</span>
-</button>
-{/if}

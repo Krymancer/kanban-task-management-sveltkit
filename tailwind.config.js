@@ -14,10 +14,11 @@ export default {
       'light-gray': '#F4F7FD',
       white: '#FFFFFF',
       red: '#EA5555',
-      'red-hover': '#FF9898'
+      'red-hover': '#FF9898',
+      trasparent: 'transparent',
     },
     fontSize: {
-      'body-l': ['16px', '23px'],
+      'body-l': ['13px', '23px'],
       'body-m': ['12px', '15px'],
       'heading-s': ['12px', {
         lineHeight: '15px',
