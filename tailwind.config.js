@@ -36,7 +36,11 @@ export default {
       'heading-xl': 700,
       bold: 700,
     },
-    extend: {},
+    extend: {
+      screens: {
+        lg: '1440px'
+      }
+    },
   },
   plugins: [],
 }

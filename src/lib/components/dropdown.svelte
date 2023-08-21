@@ -24,9 +24,9 @@
   <div>{selected}</div>
   <img src={ChevronDown} alt="chevron down" class="h-2"/>
   {#if open}
-    <button class="dark:bg-very-dark-gray rounded-lg p-4 flex flex-col gap-2 mt-[7px] dark:text-white text-body-l absolute z-10 top-full">
+    <button class="dark:bg-very-dark-gray rounded-lg p-4 flex flex-col gap-2 mt-[7px] dark:text-white text-body-l absolute z-10 left-0 top-full w-full">
       {#each items as item}
-      <button class="cursor-pointer select-none text-medium-gray" on:click|stopPropagation={() => select(item)}>{item}</button>
+      <button class="cursor-pointer select-none text-medium-gray hover:font-bold" on:click|stopPropagation={() => select(item)}>{item}</button>
       {/each}
     </button>
   {/if}

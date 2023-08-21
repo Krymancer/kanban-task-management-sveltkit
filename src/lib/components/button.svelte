@@ -16,8 +16,12 @@
   const style = `${baseClass} ${primary ? primaryClass : ''} ${secondary ? secondaryClass : ''} ${destructive ? destructiveClass : ''} ${size}`;
 
   export let label: string = "Button";
+  export let icon: string | undefined = undefined;
 </script>
 
 <button class={style} >
+  {#if icon}
+    <img src={icon} alt="icon" class=""/>
+  {/if}
   {label}
 </button>

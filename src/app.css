@@ -9,4 +9,8 @@
     font-family: 'Plus Jakarta Sans', sans-serif;
     font-display: swap;
   }
+
+  body {
+    @apply bg-light-gray dark:bg-very-dark-gray
+  }
 }

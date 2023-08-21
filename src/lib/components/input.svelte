@@ -17,5 +17,5 @@
 
 <div class={`${baseClass} ${error ? errorClass : normalClass}`}>
   <input class="outline-none text-body-l w-full bg-trasparent" bind:value={value} placeholder={placeholder} on:blur={interact}/>
-  {#if error}<div class="text-red text-body-l whitespace-nowrap z-10 absolute right-0 px-4">Can't be empty</div>{/if}
+  {#if error}<div class="text-red text-body-l whitespace-nowrap z-10 absolute right-0 px-4 select-none">Can't be empty</div>{/if}
 </div>
