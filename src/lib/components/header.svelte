@@ -10,7 +10,7 @@
 	import Button from '$lib/components/button.svelte';
 </script>
 
-<div class="flex items-center justify-between w-full p-4 bg-white dark:bg-dark-gray">
+<header class="flex items-center justify-between w-full p-4 bg-white dark:bg-dark-gray">
 	<div class="flex gap-4">
 		<img src={LogoMobile} class="flex md:hidden" alt="Logo" />
 		<img src={LogoLight} class="hidden dark:md:flex" alt="Logo" />
@@ -30,4 +30,4 @@
 			<img src={VerticalEllipsis} alt="More options" />
 		</div>
 	</div>
-</div>
+</header>
