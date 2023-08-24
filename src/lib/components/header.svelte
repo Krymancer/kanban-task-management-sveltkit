@@ -17,26 +17,27 @@
 	}
 </script>
 
-<header class="flex items-center justify-between w-full bg-white dark:bg-dark-gray">
-	<button class="flex gap-4 cursor-pointer" on:click={toggleSidebar}>
-		<div class="md:border-r md:h-full md:border-lines-light dark:md:border-lines-dark p-8 pr-[74px]">
+<header class="flex w-full items-center justify-between bg-white dark:bg-dark-gray">
+	<button class="flex cursor-pointer gap-4" on:click={toggleSidebar}>
+		<div class="p-8 pr-[74px] md:h-full md:border-r md:border-lines-light dark:md:border-lines-dark">
 			<img src={LogoMobile} class="flex md:hidden" alt="Logo" />
 			<img src={LogoLight} class="hidden dark:md:flex" alt="Logo" />
 			<img src={LogoDark} class="hidden md:flex dark:md:hidden" alt="Logo" />
 		</div>
 		<div class="p-4">
-		<div class="flex h-full gap-2 items-center">
-			<div class="text-heading-lg font-heading-l text-black dark:text-white">{selectedBoard}</div>
-			<div class="flex items-center h-full transition-all md:hidden">
-				{#if navbarOpen}
-				<img src={ChevronDown} alt="chevron down" class="w-3 h-2 mt-[2px]" />
-				{:else}
-				<img src={ChevronUp} alt="chevron up" class="w-3 h-2 mt-[2px]" />
-				{/if}
+			<div class="flex h-full items-center gap-2">
+				<div class="text-heading-lg font-heading-l text-black dark:text-white">{selectedBoard}</div>
+				<div class="flex h-full items-center transition-all md:hidden">
+					{#if navbarOpen}
+						<img src={ChevronDown} alt="chevron down" class="mt-[2px] h-2 w-3" />
+					{:else}
+						<img src={ChevronUp} alt="chevron up" class="mt-[2px] h-2 w-3" />
+					{/if}
+				</div>
 			</div>
-		</div>
-	</button>
-	<div class="flex gap-4 items-center pr-6">
+		</div></button
+	>
+	<div class="flex items-center gap-4 pr-6">
 		<div>
 			<div class="flex md:hidden">
 				<Button label="" icon={AddTaskMobile} />
