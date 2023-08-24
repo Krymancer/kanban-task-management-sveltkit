@@ -5,7 +5,7 @@
 
   let primary = !secondary && !destructive;
 
-  const baseClass = 'rounded-3xl p-4 font-bold flex items-center justify-center transition-all';
+  const baseClass = 'rounded-3xl p-4 font-bold flex items-center justify-center transition-all text-heading-m';
 
   const primaryClass = 'bg-purple text-white hover:bg-purple-hover';
   const secondaryClass = 'bg-purple/10 text-purple hover:bg-purple/30 dark:bg-white dark:text-purple dark:hover:bg-white';

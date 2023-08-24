@@ -26,6 +26,7 @@ export default {
       }],
       'heading-m': ['15px', '19px'],
       'heading-l': ['18px', '23px'],
+      'heading-lg': ['20px', '25px'],
       'heading-xl': ['24px', '30px'] 
     },
     fontWeight: {
