@@ -18,13 +18,13 @@
 </script>
 
 <header class="flex w-full items-center justify-between bg-white dark:bg-dark-gray">
-	<button class="flex cursor-pointer gap-4" on:click={toggleSidebar}>
-		<div class="p-8 pr-[74px] md:h-full md:border-r md:border-lines-light dark:md:border-lines-dark">
+	<button class="flex cursor-pointer" on:click={toggleSidebar}>
+		<div class="p-4 md:h-full md:border-r md:border-lines-light dark:md:border-lines-dark md:p-8 md:pr-[74px]">
 			<img src={LogoMobile} class="flex md:hidden" alt="Logo" />
 			<img src={LogoLight} class="hidden dark:md:flex" alt="Logo" />
 			<img src={LogoDark} class="hidden md:flex dark:md:hidden" alt="Logo" />
 		</div>
-		<div class="p-4">
+		<div class="p-4 pl-0 md:p-6">
 			<div class="flex h-full items-center gap-2">
 				<div class="text-heading-lg font-heading-l text-black dark:text-white">{selectedBoard}</div>
 				<div class="flex h-full items-center transition-all md:hidden">
