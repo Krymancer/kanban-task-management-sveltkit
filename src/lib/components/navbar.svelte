@@ -8,17 +8,17 @@
 	import IconLightTheme from '$lib/assets/icon-light-theme.svg';
 	import ToggleSwitch from './toggle-switch.svelte';
 
-	export let boards: string[] = [];
-	$: totalBoards = boards.length;
-	export let selectedBoard = boards[0];
-
+	export let boards: Board[];
+	export let selectedBoard: Board;
 	export let open = false;
+
+	$: totalBoards = boards.length;
 
 	function toggleSidebar() {
 		open = !open;
 	}
 
-	function changeBoard(board: string) {
+	function changeBoard(board: Board) {
 		selectedBoard = board;
 		open = false;
 	}
@@ -41,17 +41,17 @@
 				</div>
 				<div class="py-4">
 					{#each boards as board}
-						{#if board === selectedBoard}
+						{#if board.name === selectedBoard.name}
 							<button class="flex items-start text-white dark:text-white font-heading-m text-heading-m cursor-pointer pr-6 w-full" on:click|stopPropagation={() => changeBoard(board)}>
 								<div class="flex items-start bg-purple rounded-r-full py-4 pl-8 w-full">
 									<img src={IconBoardWhite} alt="board-icon" class="inline-block mr-2" />
-									{board}
+									{board.name}
 								</div>
 							</button>
 						{:else}
 							<button class="flex items-start text-medium-gray dark:text-medium-gray font-heading-m text-heading-m py-4 px-8 cursor-pointer" on:click|stopPropagation={() => changeBoard(board)}>
 								<img src={IconBoard} alt="board-icon" class="inline-block mr-2" />
-								{board}
+								{board.name}
 							</button>
 						{/if}
 					{/each}

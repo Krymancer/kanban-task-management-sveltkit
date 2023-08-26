@@ -21,7 +21,7 @@
 
 <button class={style} >
   {#if icon}
-    <img src={icon} alt="icon" class=""/>
+    <img src={icon} alt="icon"/>
   {/if}
   {label}
 </button>
