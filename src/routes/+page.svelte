@@ -27,6 +27,8 @@
 
 <main class="flex flex-col items-center w-screen h-screen overflow-hidden bg-light-gray dark:bg-very-dark-gray">
   <Header bind:navbarOpen={navbarOpen} selectedBoard={selectedBoard} />
-  <Navbar bind:open={navbarOpen} boards={boards} bind:selectedBoard={selectedBoard}/>
-  <BoardComponent bind:board={selectedBoard} />
+  <div class="w-full flex flex-row flex-1">
+    <Navbar bind:open={navbarOpen} boards={boards} bind:selectedBoard={selectedBoard}/>
+    <BoardComponent bind:board={selectedBoard} />
+  </div>
 </main>

@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { browser } from '$app/environment';
+
 	import HideSidebar from '$lib/assets/icon-hide-sidebar.svg';
 	import ShowSidebar from '$lib/assets/icon-show-sidebar.svg';
 	import IconBoard from '$lib/assets/icon-board.svg';
@@ -7,11 +9,29 @@
 	import IconDarkTheme from '$lib/assets/icon-dark-theme.svg';
 	import IconLightTheme from '$lib/assets/icon-light-theme.svg';
 	import ToggleSwitch from './toggle-switch.svelte';
+	import { slide, fade } from 'svelte/transition';
 
 	export let boards: Board[];
 	export let selectedBoard: Board;
-	export let open = false;
+	export let open = true;
 
+	let navbarTransitionStyle = slide;
+
+	function navbarTransition() {
+		const query = 'media (min-width: 768px)';
+		if (window.matchMedia(query)) {
+			return fade;
+		} else {
+			return slide;
+		}
+	}
+
+	if(browser) {
+		window.addEventListener('resize', () => {
+			navbarTransitionStyle = navbarTransition();
+		});
+	}
+	
 	$: totalBoards = boards.length;
 
 	function toggleSidebar() {
@@ -22,12 +42,14 @@
 		selectedBoard = board;
 		open = false;
 	}
+
+	
 </script>
 
 {#if open}
-	<nav class="
+	<nav transition:navbarTransitionStyle={{axis: 'x'}} class="
     transition-all
-    absolute top-0 left-0 w-screen h-screen bg-[rgba(0,0,0,0.5)] flex items-start pt-20 justify-center z-10  
+    absolute top-0 left-0 w-screen h-full bg-[rgba(0,0,0,0.5)] flex items-start pt-20 justify-center z-10  
     md:bg-transparent dark:md:bg-trasparent md:static md:pt-0 md:w-[260px] self-start md:border-r md:border-lines-light dark:md:border-lines-dark
     "
     >
@@ -77,7 +99,7 @@
 		</button>
 	</nav>
 {:else}
-<button on:click={toggleSidebar} class="hidden md:flex rounded-r-full h-12 w-14 bg-purple items-center pl-4 md:absolute bottom-0 left-0 mb-8">
+<button on:click={toggleSidebar} class="invisible md:visible flex rounded-r-full h-12 w-14 bg-purple items-center pl-4 md:absolute bottom-0 left-0 mb-8 transition-all">
   <img src={ShowSidebar} alt="show sidebar" />
 </button>
 {/if}
