@@ -28,11 +28,7 @@
 			<div class="flex h-full items-center gap-2">
 				<div class="text-heading-l md:text-heading-lg font-heading-l text-black dark:text-white">{selectedBoard.name}</div>
 				<div class="flex h-full items-center transition-all md:hidden">
-					{#if navbarOpen}
-						<img src={ChevronDown} alt="chevron down" class="mt-[2px] h-2 w-3" />
-					{:else}
-						<img src={ChevronUp} alt="chevron up" class="mt-[2px] h-2 w-3" />
-					{/if}
+					<img src={ChevronDown} alt="chevron down" class={`${navbarOpen ? '':'rotate-180'} mt-[2px] h-2 w-3 transition-all`} />
 				</div>
 			</div>
 		</div></button

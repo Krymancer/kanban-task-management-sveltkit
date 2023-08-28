@@ -17,9 +17,11 @@
 
   export let label: string = "Button";
   export let icon: string | undefined = undefined;
+
+  export let onClick: () => void = () => {};
 </script>
 
-<button class={style} >
+<button class={style} on:click={onClick}>
   {#if icon}
     <img src={icon} alt="icon"/>
   {/if}
