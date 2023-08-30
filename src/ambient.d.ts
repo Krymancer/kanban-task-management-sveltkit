@@ -1,14 +1,21 @@
+interface Subtask {
+  title: string;
+  done: boolean;
+}
+
 interface Card {
-  name: string;
+  title: string;
   description: string;
+  subtasks: Subtask[];
 }
 
 interface Column {
-  name: string;
+  title: string;
   cards: Card[];
 }
 
 interface Board {
-  name: string;
+  title: string;
   columns: Column[];
+  selected: boolean;
 }

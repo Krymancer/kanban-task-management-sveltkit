@@ -2,9 +2,16 @@
 	import Button from "./button.svelte";
 	import Popup from "./popup.svelte";
 
-  export let board: Board;
-  let addPopUp = false;
+  import { boardStore } from "$lib/store/boardstore";
+	import Column from "./column.svelte";
 
+  $: board = $boardStore.find((board) => board.selected);
+
+  boardStore.subscribe((boards) => {
+		board = boards.find((board) => board.selected);
+	});
+
+  let addPopUp = false;
 
   function openAddColumnPopup() {
     addPopUp = true;
@@ -12,9 +19,11 @@
 
 </script>
 
-{#if board.columns.length}
-<div>
-  hahahah colunas
+{#if board?.columns.length}
+<div class="flex p-6 gap-6">
+  {#each board?.columns as column}
+    <Column column={column}/>
+  {/each}
 </div>
 {:else}
 <div class="flex flex-col gap-6 px-4 text-center flex-1 justify-center items-center">
@@ -27,5 +36,7 @@
 
 
 <div id="popups">
-  <Popup bind:open={addPopUp} />
+  <Popup bind:open={addPopUp}>
+    testing
+  </Popup>
 </div>

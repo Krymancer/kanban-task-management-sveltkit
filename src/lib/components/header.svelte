@@ -4,16 +4,28 @@
 	import LogoMobile from '$lib/assets/logo-Mobile.svg';
 	import AddTaskMobile from '$lib/assets/icon-add-task-mobile.svg';
 	import ChevronDown from '$lib/assets/icon-chevron-down.svg';
-	import ChevronUp from '$lib/assets/icon-chevron-up.svg';
 	import VerticalEllipsis from '$lib/assets/icon-vertical-ellipsis.svg';
 
+	import { boardStore } from '$lib/store/boardstore';
+
 	import Button from '$lib/components/button.svelte';
+	import AddTask from './add-task.svelte';
 
 	export let navbarOpen = false;
-	export let selectedBoard: Board;
+	let newTaskOpen = false;
+	
+	$: selectedBoard = $boardStore.find((board) => board.selected);
+
+	boardStore.subscribe((boards) => {
+		selectedBoard = boards.find((board) => board.selected);
+	});
 
 	function toggleSidebar() {
 		navbarOpen = !navbarOpen;
+	}
+
+	function creaetNewTask() {
+		newTaskOpen = true;
 	}
 </script>
 
@@ -26,7 +38,7 @@
 		</div>
 		<div class="p-4 py-5 md:py-5 pl-0 md:p-6">
 			<div class="flex h-full items-center gap-2">
-				<div class="text-heading-l md:text-heading-lg font-heading-l text-black dark:text-white">{selectedBoard.name}</div>
+				<div class="text-heading-l md:text-heading-lg font-heading-l text-black dark:text-white">{selectedBoard?.title}</div>
 				<div class="flex h-full items-center transition-all md:hidden">
 					<img src={ChevronDown} alt="chevron down" class={`${navbarOpen ? '':'rotate-180'} mt-[2px] h-2 w-3 transition-all`} />
 				</div>
@@ -39,7 +51,7 @@
 				<Button label="" icon={AddTaskMobile} />
 			</div>
 			<div class="hidden md:flex">
-				<Button label="+ Add New Task" />
+				<Button label="+ Add New Task" onClick={creaetNewTask} />
 			</div>
 		</div>
 		<div>
@@ -47,3 +59,5 @@
 		</div>
 	</div>
 </header>
+
+<AddTask bind:open={newTaskOpen} />
